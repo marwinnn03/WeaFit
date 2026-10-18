@@ -27,7 +27,6 @@ import { ActivityPlannerCard } from './components/ActivityPlannerCard';
 import { HourlyForecastSection } from './components/HourlyForecastSection';
 import { CommuterChecklistCard } from './components/CommuterChecklistCard';
 import { WeatherSimulatorModal } from './components/WeatherSimulatorModal';
-import { NextJsCodeInspectorModal } from './components/NextJsCodeInspectorModal';
 import { GeminiKeyModal } from './components/GeminiKeyModal';
 
 const GithubIcon: React.FC<{ size?: number }> = ({ size = 14 }) => (
@@ -51,7 +50,6 @@ export const App: React.FC = () => {
 
   const [geminiKey, setGeminiKey] = useState<string>('');
   const [isSimulatorOpen, setIsSimulatorOpen] = useState(false);
-  const [isCodeInspectorOpen, setIsCodeInspectorOpen] = useState(false);
   const [isKeyModalOpen, setIsKeyModalOpen] = useState(false);
 
   // Initialize stored key on mount
@@ -184,7 +182,6 @@ export const App: React.FC = () => {
         {/* Header */}
         <Header
           onOpenSimulator={() => setIsSimulatorOpen(true)}
-          onOpenCodeInspector={() => setIsCodeInspectorOpen(true)}
           onOpenKeyModal={() => setIsKeyModalOpen(true)}
           onRefreshWeather={() => loadWeather(selectedCity)}
           isLoading={isLoadingWeather || isLoadingAi}
@@ -339,10 +336,6 @@ export const App: React.FC = () => {
         })}
       />
 
-      <NextJsCodeInspectorModal
-        isOpen={isCodeInspectorOpen}
-        onClose={() => setIsCodeInspectorOpen(false)}
-      />
 
       <GeminiKeyModal
         isOpen={isKeyModalOpen}

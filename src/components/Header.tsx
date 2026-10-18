@@ -1,9 +1,8 @@
 import React from 'react';
-import { CloudSun, Sparkles, Sliders, Code2, RefreshCw } from 'lucide-react';
+import { CloudSun, Sparkles, Sliders, RefreshCw } from 'lucide-react';
 
 interface HeaderProps {
   onOpenSimulator: () => void;
-  onOpenCodeInspector: () => void;
   onOpenKeyModal: () => void;
   onRefreshWeather: () => void;
   isLoading: boolean;
@@ -19,7 +18,6 @@ const GithubIcon: React.FC<{ size?: number }> = ({ size = 16 }) => (
 
 export const Header: React.FC<HeaderProps> = ({
   onOpenSimulator,
-  onOpenCodeInspector,
   onOpenKeyModal,
   onRefreshWeather,
   isLoading,
@@ -84,16 +82,6 @@ export const Header: React.FC<HeaderProps> = ({
             <span>Weather Simulator</span>
           </button>
 
-          {/* Next.js Code Tab Inspector */}
-          <button
-            onClick={onOpenCodeInspector}
-            className="btn-secondary"
-            style={{ padding: '8px 14px', fontSize: '0.85rem', borderColor: 'rgba(14, 165, 233, 0.3)', color: '#7dd3fc' }}
-            id="btn-view-nextjs-code"
-          >
-            <Code2 size={16} color="#38bdf8" />
-            <span>Tingnan ang Next.js Code</span>
-          </button>
 
           {/* Gemini AI Key */}
           <button
