@@ -36,7 +36,7 @@ export const NextJsCodeInspectorModal: React.FC<NextJsCodeInspectorModalProps> =
             </div>
             <div>
               <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
-                Next.js Code Inspector (KlimaFit Architecture)
+                Next.js Code Inspector (WeaFit Architecture)
               </h3>
               <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
                 Kopyahin ang Next.js App Router code para sa iyong sariling capstone o thesis project

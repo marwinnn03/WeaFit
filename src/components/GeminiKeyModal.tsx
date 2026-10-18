@@ -68,7 +68,7 @@ export const GeminiKeyModal: React.FC<GeminiKeyModalProps> = ({
         {/* Info card */}
         <div className="glass-panel-subtle" style={{ padding: '14px 16px', marginBottom: '18px', borderLeft: '4px solid #a855f7' }}>
           <p style={{ fontSize: '0.85rem', color: '#e2e8f0', margin: '0 0 6px 0', lineHeight: 1.5 }}>
-            Kapag may nakalagay na <strong>Gemini API Key</strong>, tatawag ang KlimaFit PH nang direkta sa Gemini API gamit ang <code>gemini-2.5-flash</code> o <code>gemini-1.5-flash</code> na may structured JSON schema.
+            Kapag may nakalagay na <strong>Gemini API Key</strong>, tatawag ang WeaFit nang direkta sa Gemini API gamit ang <code>gemini-2.5-flash</code> o <code>gemini-1.5-flash</code> na may structured JSON schema.
           </p>
           <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
             Kung walang key, awtomatikong gagana ang <strong>PAGASA Rule-Engine & Smart Offline Advisor</strong> kaya hindi masisira ang app!

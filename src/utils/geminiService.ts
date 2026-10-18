@@ -2,17 +2,18 @@ import { WeatherData, PersonaType, RecommendationResult, OutfitItem, GeminiRespo
 import { generateRuleBasedRecommendation } from './wardrobePresets';
 import { getPagasaHeatIndexInfo, getPagasaRainInfo } from './pagasaEngine';
 
-export const GEMINI_API_KEY_STORAGE_KEY = 'klimafit_gemini_api_key';
+export const GEMINI_API_KEY_STORAGE_KEY = 'weafit_gemini_api_key';
 
 export function getStoredGeminiKey(): string {
   if (typeof window === 'undefined') return '';
-  return localStorage.getItem(GEMINI_API_KEY_STORAGE_KEY) || '';
+  return localStorage.getItem(GEMINI_API_KEY_STORAGE_KEY) || localStorage.getItem('klimafit_gemini_api_key') || '';
 }
 
 export function saveStoredGeminiKey(key: string): void {
   if (typeof window === 'undefined') return;
   if (!key.trim()) {
     localStorage.removeItem(GEMINI_API_KEY_STORAGE_KEY);
+    localStorage.removeItem('klimafit_gemini_api_key');
   } else {
     localStorage.setItem(GEMINI_API_KEY_STORAGE_KEY, key.trim());
   }
@@ -32,7 +33,7 @@ export async function fetchGeminiOutfitRecommendation(
   }
 
   const prompt = `
-Ikaw si KlimaFit AI, isang matalinong Pinoy fashion stylist at tropical weather advisor.
+Ikaw si WeaFit AI, isang matalinong Pinoy fashion stylist at tropical weather advisor.
 Bigyan ng payo ang user base sa sumusunod na real-time weather sa Pilipinas:
 
 Lokasyon: ${weather.cityName}

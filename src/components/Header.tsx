@@ -24,7 +24,7 @@ export const Header: React.FC<HeaderProps> = ({
   onRefreshWeather,
   isLoading,
   hasGeminiKey,
-  repoUrl = 'https://github.com/marwinnn03/klimafit-ph'
+  repoUrl = 'https://github.com/marwinnn03/WeaFit'
 }) => {
   return (
     <header className="glass-panel" style={{ padding: '16px 24px', marginBottom: '24px' }}>
@@ -47,10 +47,10 @@ export const Header: React.FC<HeaderProps> = ({
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <h1 className="font-display" style={{ fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.02em', background: 'linear-gradient(to right, #38bdf8, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0 }}>
-                KlimaFit PH
+                WeaFit
               </h1>
               <span className="badge" style={{ background: 'rgba(2, 132, 199, 0.2)', color: '#38bdf8', border: '1px solid rgba(2, 132, 199, 0.4)', fontSize: '0.7rem' }}>
-                WeaFit v2.0
+                v2.0
               </span>
             </div>
             <p style={{ fontSize: '0.825rem', color: '#94a3b8', margin: 0 }}>

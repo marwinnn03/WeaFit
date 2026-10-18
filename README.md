@@ -1,4 +1,4 @@
-# ☀️ KlimaFit PH (WeaFit)
+# ☀️ WeaFit
 ### Smart Weather Outfit & Activity Advisor tailored for the Philippines 🇵🇭
 
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://react.dev/)
@@ -8,7 +8,7 @@
 [![DOST--PAGASA](https://img.shields.io/badge/Standard-DOST--PAGASA%20Heat%20Index-red.svg)](https://www.pagasa.dost.gov.ph/)
 [![Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini%202.5%20Flash-green.svg)](https://ai.google.dev/)
 
-**KlimaFit PH** is an intelligent tropical climate outfit and lifestyle recommendation system designed specifically for Filipino commuters, students, and professionals. Unlike Western weather apps that suggest winter coats or thermal scarves, KlimaFit PH evaluates **PAGASA Heat Index (Damang Init)**, tropical monsoon rainfall warnings, UV radiation, and real commuter pain points (Jeepney heat, LRT rush hours, motorcycle ride sprays, and flooded sidewalks).
+**WeaFit** is an intelligent tropical climate outfit and lifestyle recommendation system designed specifically for Filipino commuters, students, and professionals. Unlike Western weather apps that suggest winter coats or thermal scarves, WeaFit evaluates **PAGASA Heat Index (Damang Init)**, tropical monsoon rainfall warnings, UV radiation, and real commuter pain points (Jeepney heat, LRT rush hours, motorcycle ride sprays, and flooded sidewalks).
 
 ---
 
@@ -64,7 +64,7 @@ Click the **"Tingnan ang Next.js Code"** tab in the header to view and copy-past
 flowchart LR
     A[Open-Meteo API / GPS] --> B[PAGASA Rule Engine & Data Normalizer]
     B --> C[Gemini AI Pinoy Stylist]
-    C --> D[KlimaFit React Glassmorphic UI]
+    C --> D[WeaFit React Glassmorphic UI]
     B -.->|Offline / No Key Fallback| D
 ```
 
@@ -80,8 +80,8 @@ flowchart LR
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/marwinnn03/klimafit-ph.git
-   cd klimafit-ph
+   git clone https://github.com/marwinnn03/WeaFit.git
+   cd WeaFit
    ```
 
 2. Install dependencies:

@@ -36,7 +36,7 @@ export const OutfitRecommendationCard: React.FC<OutfitRecommendationCardProps> =
 
   const copyToClipboard = () => {
     const text = `
-🌤️ KLIMAFIT PH OUTFIT ADVICE (${personaName})
+🌤️ WEAFIT OUTFIT ADVICE (${personaName})
 Vibe: ${recommendation.vibeSummary}
 Payo: ${recommendation.topAdvice}
 
@@ -47,7 +47,7 @@ COMMUTER TIP:
 ${recommendation.commuterTip}
 
 Hydration Target: ${recommendation.hydrationTargetLiters} Liters
-Source: KlimaFit PH (WeaFit)
+Source: WeaFit PH
     `.trim();
 
     navigator.clipboard.writeText(text);

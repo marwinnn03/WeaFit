@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
     });
 
     const prompt = \`
-Ikaw si KlimaFit AI, isang matalinong Pinoy fashion stylist at tropical weather advisor.
+Ikaw si WeaFit AI, isang matalinong Pinoy fashion stylist at tropical weather advisor.
 Bigyan ng payo ang user base sa real-time weather sa Pilipinas:
 
 Lokasyon: \${weather.cityName}

@@ -189,7 +189,7 @@ export const App: React.FC = () => {
           onRefreshWeather={() => loadWeather(selectedCity)}
           isLoading={isLoadingWeather || isLoadingAi}
           hasGeminiKey={!!geminiKey}
-          repoUrl="https://github.com/marwinnn03/klimafit-ph"
+          repoUrl="https://github.com/marwinnn03/WeaFit"
         />
 
         {/* Global Error Notice if any */}
@@ -303,13 +303,13 @@ export const App: React.FC = () => {
         {/* Footer */}
         <footer style={{ marginTop: '40px', paddingTop: '24px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', fontSize: '0.825rem', color: '#64748b' }}>
           <div>
-            <strong>KlimaFit PH (WeaFit)</strong> • Gawa para sa mga Pinoy commuters, estudyante, at professionals.
+            <strong>WeaFit</strong> • Gawa para sa mga Pinoy commuters, estudyante, at professionals.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span>Data mula sa <strong>Open-Meteo</strong> & <strong>DOST-PAGASA</strong></span>
             <span>AI powered by <strong>Google Gemini</strong></span>
             <a
-              href="https://github.com/marwinnn03/klimafit-ph"
+              href="https://github.com/marwinnn03/WeaFit"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#38bdf8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
