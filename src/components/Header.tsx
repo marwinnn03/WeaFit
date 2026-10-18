@@ -27,7 +27,7 @@ export const Header: React.FC<HeaderProps> = ({
   return (
     <header className="glass-panel" style={{ padding: '16px 24px', marginBottom: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-        
+
         {/* Brand */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <div style={{
@@ -47,19 +47,16 @@ export const Header: React.FC<HeaderProps> = ({
               <h1 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em', background: 'linear-gradient(to right, #0284c7, #ea580c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0 }}>
                 WeaFit
               </h1>
-              <span className="badge" style={{ background: '#e0f2fe', color: '#0369a1', border: '1px solid #bae6fd', fontSize: '0.7rem' }}>
-                v2.0
-              </span>
             </div>
             <p style={{ fontSize: '0.825rem', color: '#64748b', margin: 0, fontWeight: 500 }}>
-              Smart Weather Outfit & Activity Advisor para sa Pilipinas
+              A Smart Weather Outfit & Activity Advisory
             </p>
           </div>
         </div>
 
         {/* Action Controls */}
         <div style={{ display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: '10px' }}>
-          
+
           {/* Refresh live weather */}
           <button
             onClick={onRefreshWeather}

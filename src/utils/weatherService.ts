@@ -101,3 +101,38 @@ export function createSimulatedWeather(
     hourlyForecast
   };
 }
+
+/**
+ * Searches for any Philippine or global city/municipality using Open-Meteo Geocoding API
+ */
+export async function searchLocations(query: string): Promise<import('../types').CityData[]> {
+  if (!query || query.trim().length < 2) return [];
+
+  const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(query.trim())}&count=8&language=en&format=json`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return [];
+    const data = await response.json();
+    if (!data.results || !Array.isArray(data.results)) return [];
+
+    // Prioritize results in Philippines, but allow others if specifically searched
+    const phResults = data.results.filter((item: any) => item.country === 'Philippines' || item.country_code === 'PH');
+    const listToMap = phResults.length > 0 ? phResults : data.results;
+
+    return listToMap.map((item: any) => {
+      const adminPart = item.admin1 ? ` (${item.admin1})` : '';
+      return {
+        name: `${item.name}${adminPart}`,
+        province: item.admin1 || item.country || 'Pilipinas',
+        latitude: Number(item.latitude),
+        longitude: Number(item.longitude),
+        isPopular: false
+      };
+    });
+  } catch (err) {
+    console.warn('Geocoding search error:', err);
+    return [];
+  }
+}
+

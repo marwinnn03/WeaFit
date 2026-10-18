@@ -35,7 +35,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
         <div>
           <h2 style={{ fontSize: '0.9rem', fontWeight: 800, margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#475569' }}>
-            Sino Ka Ngayong Araw? (Persona Selector)
+            Ano Ang Ganap Ngayong Araw?
           </h2>
           <p style={{ fontSize: '0.8rem', color: '#64748b', margin: '2px 0 0 0' }}>
             Nagbabago ang suhestiyon sa damit at payo base sa iyong araw-araw na routine
