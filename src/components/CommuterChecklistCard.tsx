@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Briefcase, Droplets, CheckSquare, Square, Plus, GlassWater } from 'lucide-react';
-import { RecommendationResult } from '../types';
+import { Briefcase, CheckSquare, Square, GlassWater } from 'lucide-react';
+import type { RecommendationResult } from '../types';
 
 interface CommuterChecklistCardProps {
   recommendation: RecommendationResult;
@@ -29,8 +29,8 @@ export const CommuterChecklistCard: React.FC<CommuterChecklistCardProps> = ({
         {/* Packing Checklist */}
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <Briefcase size={18} color="#38bdf8" />
-            <h3 style={{ fontSize: '1.05rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+            <Briefcase size={18} color="#0284c7" />
+            <h3 style={{ fontSize: '1.05rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>
               🎒 Mga Dapat Dalhin sa Bag (Baon Checklist)
             </h3>
           </div>
@@ -44,10 +44,10 @@ export const CommuterChecklistCard: React.FC<CommuterChecklistCardProps> = ({
                   onClick={() => toggleItem(item)}
                   className={`checklist-item ${isChecked ? 'checked' : ''}`}
                 >
-                  <div style={{ color: isChecked ? '#10b981' : '#64748b' }}>
+                  <div style={{ color: isChecked ? '#059669' : '#94a3b8' }}>
                     {isChecked ? <CheckSquare size={18} /> : <Square size={18} />}
                   </div>
-                  <span style={{ fontSize: '0.875rem', color: isChecked ? '#94a3b8' : '#e2e8f0', fontWeight: isChecked ? 400 : 500 }}>
+                  <span style={{ fontSize: '0.875rem', color: isChecked ? '#94a3b8' : '#1e293b', fontWeight: isChecked ? 400 : 600 }}>
                     {item}
                   </span>
                 </div>
@@ -57,20 +57,20 @@ export const CommuterChecklistCard: React.FC<CommuterChecklistCardProps> = ({
         </div>
 
         {/* Hydration Tracker */}
-        <div className="glass-panel-subtle" style={{ padding: '18px', borderLeft: '4px solid #38bdf8' }}>
+        <div className="glass-panel-subtle" style={{ padding: '18px', background: '#ffffff', border: '1px solid #e2e8f0', borderLeft: '4px solid #0284c7' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <GlassWater size={18} color="#38bdf8" />
-              <h3 style={{ fontSize: '1rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+              <GlassWater size={18} color="#0284c7" />
+              <h3 style={{ fontSize: '1rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>
                 💧 Hydration Target Tracker
               </h3>
             </div>
-            <span className="badge" style={{ background: 'rgba(56, 189, 248, 0.2)', color: '#38bdf8' }}>
+            <span className="badge" style={{ background: '#e0f2fe', color: '#0369a1', border: '1px solid #bae6fd' }}>
               Target: {recommendation.hydrationTargetLiters} Liters
             </span>
           </div>
 
-          <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: '0 0 14px 0' }}>
+          <p style={{ fontSize: '0.8rem', color: '#64748b', margin: '0 0 14px 0' }}>
             I-log ang bawat baso (250ml) na naiinom mo ngayong araw laban sa dehydration:
           </p>
 
@@ -83,18 +83,19 @@ export const CommuterChecklistCard: React.FC<CommuterChecklistCardProps> = ({
                   key={i}
                   onClick={() => setWaterCupsDrank(i + 1)}
                   style={{
-                    width: '34px',
-                    height: '34px',
-                    borderRadius: '8px',
-                    border: isFilled ? '1px solid #38bdf8' : '1px solid rgba(255, 255, 255, 0.1)',
-                    background: isFilled ? 'rgba(56, 189, 248, 0.25)' : 'rgba(255, 255, 255, 0.03)',
-                    color: isFilled ? '#38bdf8' : '#64748b',
+                    width: '36px',
+                    height: '36px',
+                    borderRadius: '10px',
+                    border: isFilled ? '1.5px solid #0284c7' : '1px solid #e2e8f0',
+                    background: isFilled ? '#e0f2fe' : '#f8fafc',
+                    color: isFilled ? '#0369a1' : '#94a3b8',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     cursor: 'pointer',
-                    fontSize: '0.75rem',
-                    fontWeight: 700
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    transition: 'all 0.15s ease'
                   }}
                   title={`Baso #${i + 1}`}
                 >
@@ -105,14 +106,14 @@ export const CommuterChecklistCard: React.FC<CommuterChecklistCardProps> = ({
           </div>
 
           {/* Progress bar */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.8rem' }}>
-            <span style={{ color: '#94a3b8' }}>
-              Nainom: <strong>{(waterCupsDrank * 0.25).toFixed(2)}L</strong> / {recommendation.hydrationTargetLiters}L
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', fontSize: '0.825rem' }}>
+            <span style={{ color: '#475569' }}>
+              Nainom: <strong style={{ color: '#0f172a' }}>{(waterCupsDrank * 0.25).toFixed(2)}L</strong> / {recommendation.hydrationTargetLiters}L
             </span>
             <button
               onClick={() => setWaterCupsDrank(prev => Math.min(prev + 1, totalCups))}
               className="btn-secondary"
-              style={{ padding: '4px 10px', fontSize: '0.75rem' }}
+              style={{ padding: '6px 12px', fontSize: '0.785rem', color: '#0284c7', borderColor: '#bae6fd' }}
             >
               + Uminom ng Baso
             </button>

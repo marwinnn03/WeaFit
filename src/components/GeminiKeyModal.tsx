@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Key, ExternalLink, Check, Trash2, AlertCircle } from 'lucide-react';
+import { X, Sparkles, Key, ExternalLink, Check, Trash2 } from 'lucide-react';
 import { saveStoredGeminiKey } from '../utils/geminiService';
 
 interface GeminiKeyModalProps {
@@ -47,41 +47,41 @@ export const GeminiKeyModal: React.FC<GeminiKeyModalProps> = ({
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'linear-gradient(135deg, #8b5cf6, #ec4899)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Sparkles size={20} color="#ffffff" />
+            <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#faf5ff', border: '1px solid #e9d5ff', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Sparkles size={20} color="#9333ea" />
             </div>
             <div>
-              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>
                 Gemini AI Smart Advisor Setup
               </h3>
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
+              <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
                 Live LLM prompting gamit ang Google Generative AI
               </p>
             </div>
           </div>
 
-          <button onClick={onClose} className="btn-secondary" style={{ padding: '8px' }}>
+          <button onClick={onClose} className="btn-secondary" style={{ padding: '8px', color: '#64748b' }}>
             <X size={18} />
           </button>
         </div>
 
         {/* Info card */}
-        <div className="glass-panel-subtle" style={{ padding: '14px 16px', marginBottom: '18px', borderLeft: '4px solid #a855f7' }}>
-          <p style={{ fontSize: '0.85rem', color: '#e2e8f0', margin: '0 0 6px 0', lineHeight: 1.5 }}>
+        <div className="glass-panel-subtle" style={{ padding: '14px 16px', marginBottom: '18px', background: '#faf5ff', border: '1px solid #e9d5ff', borderLeft: '4px solid #a855f7' }}>
+          <p style={{ fontSize: '0.85rem', color: '#581c87', margin: '0 0 6px 0', lineHeight: 1.5, fontWeight: 500 }}>
             Kapag may nakalagay na <strong>Gemini API Key</strong>, tatawag ang WeaFit nang direkta sa Gemini API gamit ang <code>gemini-2.5-flash</code> o <code>gemini-1.5-flash</code> na may structured JSON schema.
           </p>
-          <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
+          <p style={{ fontSize: '0.8rem', color: '#7e22ce', margin: 0 }}>
             Kung walang key, awtomatikong gagana ang <strong>PAGASA Rule-Engine & Smart Offline Advisor</strong> kaya hindi masisira ang app!
           </p>
         </div>
 
         {/* Input */}
         <div style={{ marginBottom: '18px' }}>
-          <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 600, color: '#cbd5e1', marginBottom: '6px' }}>
+          <label style={{ display: 'block', fontSize: '0.825rem', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
             I-paste ang iyong Gemini API Key:
           </label>
           <div style={{ position: 'relative' }}>
-            <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#64748b' }}>
+            <div style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8' }}>
               <Key size={16} />
             </div>
             <input
@@ -93,11 +93,12 @@ export const GeminiKeyModal: React.FC<GeminiKeyModalProps> = ({
                 width: '100%',
                 padding: '12px 14px 12px 38px',
                 borderRadius: '12px',
-                border: '1px solid rgba(255, 255, 255, 0.15)',
-                background: 'rgba(0, 0, 0, 0.4)',
-                color: '#ffffff',
+                border: '1.5px solid #cbd5e1',
+                background: '#ffffff',
+                color: '#0f172a',
                 fontSize: '0.9rem',
-                fontFamily: 'monospace'
+                fontFamily: 'monospace',
+                boxShadow: '0 1px 3px rgba(15, 23, 42, 0.05)'
               }}
             />
           </div>
@@ -106,17 +107,17 @@ export const GeminiKeyModal: React.FC<GeminiKeyModalProps> = ({
               href="https://aistudio.google.com/app/apikey"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#38bdf8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+              style={{ color: '#0284c7', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}
             >
               <span>Kumuha ng libreng API key sa Google AI Studio</span>
               <ExternalLink size={12} />
             </a>
-            <span style={{ color: '#64748b' }}>Naka-save lang sa iyong browser</span>
+            <span style={{ color: '#94a3b8' }}>Naka-save lang sa iyong browser</span>
           </div>
         </div>
 
         {statusMessage && (
-          <div style={{ padding: '10px 14px', borderRadius: '10px', background: 'rgba(16, 185, 129, 0.15)', border: '1px solid rgba(16, 185, 129, 0.3)', color: '#34d399', fontSize: '0.85rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <div style={{ padding: '10px 14px', borderRadius: '10px', background: '#ecfdf5', border: '1px solid #a7f3d0', color: '#065f46', fontSize: '0.85rem', marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 600 }}>
             <Check size={16} />
             <span>{statusMessage}</span>
           </div>
@@ -128,7 +129,7 @@ export const GeminiKeyModal: React.FC<GeminiKeyModalProps> = ({
             <button
               onClick={handleClear}
               className="btn-secondary"
-              style={{ padding: '10px 14px', fontSize: '0.85rem', color: '#f87171', borderColor: 'rgba(239, 68, 68, 0.3)' }}
+              style={{ padding: '10px 14px', fontSize: '0.85rem', color: '#dc2626', borderColor: '#fecdd3', background: '#fff1f2' }}
             >
               <Trash2 size={16} />
               <span>Burahin ang Key</span>

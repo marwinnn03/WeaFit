@@ -191,9 +191,9 @@ export const App: React.FC = () => {
 
         {/* Global Error Notice if any */}
         {errorMessage && (
-          <div style={{ padding: '12px 18px', borderRadius: '12px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', color: '#fca5a5', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div style={{ padding: '12px 18px', borderRadius: '12px', background: '#fff1f2', border: '1px solid #fecdd3', color: '#be123c', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
             <AlertCircle size={18} />
-            <span style={{ fontSize: '0.85rem' }}>{errorMessage}</span>
+            <span style={{ fontSize: '0.85rem', fontWeight: 600 }}>{errorMessage}</span>
           </div>
         )}
 
@@ -218,8 +218,8 @@ export const App: React.FC = () => {
                 heatInfo={heatInfo}
               />
             ) : (
-              <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: '#94a3b8' }}>
-                <RefreshCw size={28} className="animate-spin" style={{ margin: '0 auto 12px auto' }} />
+              <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: '#64748b' }}>
+                <RefreshCw size={28} className="animate-spin" style={{ margin: '0 auto 12px auto' }} color="#0284c7" />
                 <p>Kinukuha ang pinakabagong lagay ng panahon mula sa Open-Meteo...</p>
               </div>
             )}
@@ -248,8 +248,8 @@ export const App: React.FC = () => {
 
             {/* AI Status / Regenerate Action */}
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '16px', flexWrap: 'wrap', gap: '8px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#94a3b8' }}>
-                <Sparkles size={14} color="#a855f7" />
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.8rem', color: '#475569', fontWeight: 600 }}>
+                <Sparkles size={14} color="#9333ea" />
                 <span>
                   {geminiKey ? 'Aktibo ang Gemini AI Integration' : 'Naka-setup sa PAGASA Tropical Rule Engine'}
                 </span>
@@ -259,7 +259,7 @@ export const App: React.FC = () => {
                 onClick={() => weather && updateRecommendations(weather, selectedPersona, geminiKey)}
                 disabled={isLoadingAi}
                 className="btn-secondary"
-                style={{ padding: '6px 12px', fontSize: '0.785rem' }}
+                style={{ padding: '7px 14px', fontSize: '0.785rem', color: '#0284c7', borderColor: '#bae6fd', background: '#f0f9ff' }}
               >
                 <RefreshCw size={13} className={isLoadingAi ? 'animate-spin' : ''} />
                 <span>{isLoadingAi ? 'Bumubuo ng AI payo...' : 'I-refresh ang Suhestiyon'}</span>
@@ -273,8 +273,8 @@ export const App: React.FC = () => {
                 personaName={selectedPersona.toUpperCase()}
               />
             ) : (
-              <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: '#94a3b8' }}>
-                <RefreshCw size={28} className="animate-spin" style={{ margin: '0 auto 12px auto' }} />
+              <div className="glass-panel" style={{ padding: '40px', textAlign: 'center', color: '#64748b' }}>
+                <RefreshCw size={28} className="animate-spin" style={{ margin: '0 auto 12px auto' }} color="#0284c7" />
                 <p>Pinoproseso ang suhestiyon sa kasuotan...</p>
               </div>
             )}
@@ -298,9 +298,9 @@ export const App: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <footer style={{ marginTop: '40px', paddingTop: '24px', borderTop: '1px solid rgba(255, 255, 255, 0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', fontSize: '0.825rem', color: '#64748b' }}>
+        <footer style={{ marginTop: '40px', paddingTop: '24px', borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '14px', fontSize: '0.825rem', color: '#64748b' }}>
           <div>
-            <strong>WeaFit</strong> • Gawa para sa mga Pinoy commuters, estudyante, at professionals.
+            <strong style={{ color: '#0f172a' }}>WeaFit</strong> • Gawa para sa mga Pinoy commuters, estudyante, at professionals.
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
             <span>Data mula sa <strong>Open-Meteo</strong> & <strong>DOST-PAGASA</strong></span>
@@ -309,7 +309,7 @@ export const App: React.FC = () => {
               href="https://github.com/marwinnn03/WeaFit"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#38bdf8', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px' }}
+              style={{ color: '#0284c7', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}
             >
               <GithubIcon size={14} />
               <span>GitHub Repo</span>
@@ -335,7 +335,6 @@ export const App: React.FC = () => {
           uvIndex: 6
         })}
       />
-
 
       <GeminiKeyModal
         isOpen={isKeyModalOpen}

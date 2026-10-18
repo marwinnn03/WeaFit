@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { X, Flame, CloudRain, Sun, Mountain, Zap, SlidersHorizontal, Check } from 'lucide-react';
-import { WeatherData } from '../types';
+import { X, SlidersHorizontal, Check } from 'lucide-react';
+import type { WeatherData } from '../types';
 import { createSimulatedWeather } from '../utils/weatherService';
 
 interface WeatherSimulatorModalProps {
@@ -20,7 +20,6 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
   const [feelsLike, setFeelsLike] = useState(currentWeather.feelsLike);
   const [rainChance, setRainChance] = useState(currentWeather.rainChance);
   const [humidity, setHumidity] = useState(currentWeather.humidity);
-  const [windSpeed, setWindSpeed] = useState(currentWeather.windSpeed);
   const [weatherCode, setWeatherCode] = useState(currentWeather.weatherCode);
 
   if (!isOpen) return null;
@@ -111,7 +110,7 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
       feelsLike,
       rainChance,
       humidity,
-      windSpeed,
+      windSpeed: currentWeather.windSpeed || 14,
       weatherCode,
       uvIndex: feelsLike >= 40 ? 11 : 6
     });
@@ -126,27 +125,27 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <div style={{ width: '38px', height: '38px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <SlidersHorizontal size={20} color="#f59e0b" />
+            <div style={{ width: '40px', height: '40px', borderRadius: '12px', background: '#fffbeb', border: '1px solid #fde68a', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <SlidersHorizontal size={20} color="#d97706" />
             </div>
             <div>
-              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+              <h3 className="font-display" style={{ fontSize: '1.25rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>
                 Weather Simulator (Subukan ang Iba't Ibang Panahon)
               </h3>
-              <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
+              <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
                 I-test agad ang tugon ng PAGASA Rule Engine at Gemini AI sa matitinding klima
               </p>
             </div>
           </div>
 
-          <button onClick={onClose} className="btn-secondary" style={{ padding: '8px' }}>
+          <button onClick={onClose} className="btn-secondary" style={{ padding: '8px', color: '#64748b' }}>
             <X size={18} />
           </button>
         </div>
 
         {/* Quick Presets */}
         <div style={{ marginBottom: '24px' }}>
-          <span style={{ fontSize: '0.775rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#38bdf8', display: 'block', marginBottom: '10px' }}>
+          <span style={{ fontSize: '0.775rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#0284c7', display: 'block', marginBottom: '10px' }}>
             Mabilisang Scenarios (Presets):
           </span>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -157,20 +156,21 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
                 style={{
                   padding: '12px 16px',
                   borderRadius: '12px',
-                  border: '1px solid rgba(255, 255, 255, 0.08)',
-                  background: 'rgba(255, 255, 255, 0.03)',
-                  color: '#ffffff',
+                  border: '1px solid #e2e8f0',
+                  background: '#ffffff',
+                  color: '#0f172a',
                   textAlign: 'left',
                   cursor: 'pointer',
-                  transition: 'all 0.15s ease'
+                  transition: 'all 0.15s ease',
+                  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.02)'
                 }}
-                onMouseEnter={e => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)')}
-                onMouseLeave={e => (e.currentTarget.style.background = 'rgba(255, 255, 255, 0.03)')}
+                onMouseEnter={e => (e.currentTarget.style.background = '#f8fafc')}
+                onMouseLeave={e => (e.currentTarget.style.background = '#ffffff')}
               >
-                <div style={{ fontWeight: 700, fontSize: '0.9rem', marginBottom: '2px' }}>
+                <div style={{ fontWeight: 700, fontSize: '0.9rem', marginBottom: '2px', color: '#0f172a' }}>
                   {p.title}
                 </div>
-                <div style={{ fontSize: '0.785rem', color: '#94a3b8' }}>
+                <div style={{ fontSize: '0.8rem', color: '#64748b' }}>
                   {p.desc}
                 </div>
               </button>
@@ -179,8 +179,8 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
         </div>
 
         {/* Custom Sliders */}
-        <div className="glass-panel-subtle" style={{ padding: '18px', marginBottom: '20px' }}>
-          <span style={{ fontSize: '0.775rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#f59e0b', display: 'block', marginBottom: '14px' }}>
+        <div className="glass-panel-subtle" style={{ padding: '18px', marginBottom: '20px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+          <span style={{ fontSize: '0.775rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#d97706', display: 'block', marginBottom: '14px' }}>
             Custom Weather Sliders:
           </span>
 
@@ -188,9 +188,9 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
             
             {/* Temp Slider */}
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#cbd5e1', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
                 <span>Temperatura (°C)</span>
-                <strong>{temp}°C</strong>
+                <strong style={{ color: '#0f172a' }}>{temp}°C</strong>
               </div>
               <input
                 type="range"
@@ -198,15 +198,15 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
                 max="45"
                 value={temp}
                 onChange={e => setTemp(Number(e.target.value))}
-                style={{ width: '100%', accentColor: '#38bdf8' }}
+                style={{ width: '100%', accentColor: '#0284c7' }}
               />
             </div>
 
             {/* Feels like Slider */}
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#cbd5e1', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
                 <span>Damang Init / Heat Index (°C)</span>
-                <strong style={{ color: feelsLike >= 42 ? '#ef4444' : feelsLike >= 33 ? '#f97316' : '#10b981' }}>{feelsLike}°C</strong>
+                <strong style={{ color: feelsLike >= 42 ? '#dc2626' : feelsLike >= 33 ? '#ea580c' : '#059669' }}>{feelsLike}°C</strong>
               </div>
               <input
                 type="range"
@@ -214,15 +214,15 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
                 max="54"
                 value={feelsLike}
                 onChange={e => setFeelsLike(Number(e.target.value))}
-                style={{ width: '100%', accentColor: '#ef4444' }}
+                style={{ width: '100%', accentColor: '#dc2626' }}
               />
             </div>
 
             {/* Rain chance Slider */}
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#cbd5e1', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
                 <span>Tsansa ng Ulan (%)</span>
-                <strong>{rainChance}%</strong>
+                <strong style={{ color: '#0284c7' }}>{rainChance}%</strong>
               </div>
               <input
                 type="range"
@@ -236,15 +236,15 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
                   else if (val >= 40) setWeatherCode(51);
                   else setWeatherCode(1);
                 }}
-                style={{ width: '100%', accentColor: '#3b82f6' }}
+                style={{ width: '100%', accentColor: '#0284c7' }}
               />
             </div>
 
             {/* Humidity Slider */}
             <div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#cbd5e1', marginBottom: '6px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', color: '#334155', marginBottom: '6px', fontWeight: 600 }}>
                 <span>Alinsangan / Humidity (%)</span>
-                <strong>{humidity}%</strong>
+                <strong style={{ color: '#7e22ce' }}>{humidity}%</strong>
               </div>
               <input
                 type="range"
@@ -252,7 +252,7 @@ export const WeatherSimulatorModal: React.FC<WeatherSimulatorModalProps> = ({
                 max="100"
                 value={humidity}
                 onChange={e => setHumidity(Number(e.target.value))}
-                style={{ width: '100%', accentColor: '#a855f7' }}
+                style={{ width: '100%', accentColor: '#9333ea' }}
               />
             </div>
 

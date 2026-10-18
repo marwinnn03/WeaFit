@@ -1,6 +1,6 @@
 import React from 'react';
-import { CheckCircle, XCircle, Compass, Bus, MapPin } from 'lucide-react';
-import { RecommendationResult, PersonaType } from '../types';
+import { CheckCircle, XCircle, Bus } from 'lucide-react';
+import type { RecommendationResult, PersonaType } from '../types';
 
 interface ActivityPlannerCardProps {
   recommendation: RecommendationResult;
@@ -8,18 +8,17 @@ interface ActivityPlannerCardProps {
 }
 
 export const ActivityPlannerCard: React.FC<ActivityPlannerCardProps> = ({
-  recommendation,
-  persona
+  recommendation
 }) => {
   return (
     <div className="glass-panel" style={{ padding: '24px', marginBottom: '24px' }}>
       
       {/* Title */}
       <div style={{ marginBottom: '18px' }}>
-        <h2 className="font-display" style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0, color: '#ffffff' }}>
+        <h2 className="font-display" style={{ fontSize: '1.3rem', fontWeight: 800, margin: 0, color: '#0f172a' }}>
           🏃 Suhestiyon sa Aktibidad at Commute Guide
         </h2>
-        <p style={{ fontSize: '0.825rem', color: '#94a3b8', margin: '2px 0 0 0' }}>
+        <p style={{ fontSize: '0.825rem', color: '#64748b', margin: '2px 0 0 0' }}>
           Mga ligtas at masayang pwedeng gawin base sa lagay ng panahon ngayon
         </p>
       </div>
@@ -28,30 +27,30 @@ export const ActivityPlannerCard: React.FC<ActivityPlannerCardProps> = ({
       <div style={{
         padding: '16px',
         borderRadius: '14px',
-        background: 'rgba(2, 132, 199, 0.1)',
-        border: '1px solid rgba(56, 189, 248, 0.25)',
+        background: '#f0f9ff',
+        border: '1px solid #bae6fd',
         display: 'flex',
         alignItems: 'flex-start',
         gap: '12px',
         marginBottom: '20px'
       }}>
         <div style={{
-          width: '36px',
-          height: '36px',
-          borderRadius: '10px',
-          background: 'rgba(56, 189, 248, 0.2)',
+          width: '38px',
+          height: '38px',
+          borderRadius: '12px',
+          background: '#e0f2fe',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           flexShrink: 0
         }}>
-          <Bus size={18} color="#38bdf8" />
+          <Bus size={18} color="#0284c7" />
         </div>
         <div>
-          <span style={{ fontSize: '0.75rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#38bdf8' }}>
+          <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#0369a1' }}>
             Biyahe & Commute Strategy
           </span>
-          <p style={{ fontSize: '0.875rem', color: '#f1f5f9', margin: '3px 0 0 0', lineHeight: 1.5 }}>
+          <p style={{ fontSize: '0.875rem', color: '#1e293b', margin: '3px 0 0 0', lineHeight: 1.5, fontWeight: 500 }}>
             {recommendation.commuterTip}
           </p>
         </div>
@@ -61,30 +60,31 @@ export const ActivityPlannerCard: React.FC<ActivityPlannerCardProps> = ({
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px' }}>
         
         {/* Recommended activities */}
-        <div className="glass-panel-subtle" style={{ padding: '18px', borderLeft: '4px solid #10b981' }}>
+        <div className="glass-panel-subtle" style={{ padding: '18px', background: '#ffffff', border: '1px solid #e2e8f0', borderLeft: '4px solid #059669' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <CheckCircle size={18} color="#10b981" />
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+            <CheckCircle size={18} color="#059669" />
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, margin: 0, color: '#0f172a' }}>
               Mga Magagandang Gawin (Do's)
             </h3>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {recommendation.activities.recommended.map((act, i) => (
-              <div key={i} style={{ padding: '10px 12px', borderRadius: '10px', background: 'rgba(255, 255, 255, 0.03)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                  <span style={{ fontSize: '0.875rem', fontWeight: 700, color: '#f8fafc' }}>
+              <div key={i} style={{ padding: '10px 12px', borderRadius: '10px', background: '#f8fafc', border: '1px solid #e2e8f0' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '3px' }}>
+                  <span style={{ fontSize: '0.875rem', fontWeight: 700, color: '#0f172a' }}>
                     {act.title}
                   </span>
                   <span className="badge" style={{
                     fontSize: '0.65rem',
-                    background: act.type === 'indoor' ? 'rgba(59, 130, 246, 0.15)' : act.type === 'outdoor' ? 'rgba(16, 185, 129, 0.15)' : 'rgba(245, 158, 11, 0.15)',
-                    color: act.type === 'indoor' ? '#60a5fa' : act.type === 'outdoor' ? '#34d399' : '#fbbf24'
+                    background: act.type === 'indoor' ? '#eff6ff' : act.type === 'outdoor' ? '#ecfdf5' : '#fffbeb',
+                    color: act.type === 'indoor' ? '#1d4ed8' : act.type === 'outdoor' ? '#047857' : '#b45309',
+                    border: `1px solid ${act.type === 'indoor' ? '#bfdbfe' : act.type === 'outdoor' ? '#a7f3d0' : '#fde68a'}`
                   }}>
                     {act.type.toUpperCase()}
                   </span>
                 </div>
-                <p style={{ fontSize: '0.8rem', color: '#94a3b8', margin: 0 }}>
+                <p style={{ fontSize: '0.8rem', color: '#64748b', margin: 0 }}>
                   {act.desc}
                 </p>
               </div>
@@ -93,21 +93,21 @@ export const ActivityPlannerCard: React.FC<ActivityPlannerCardProps> = ({
         </div>
 
         {/* Activities to Avoid */}
-        <div className="glass-panel-subtle" style={{ padding: '18px', borderLeft: '4px solid #ef4444' }}>
+        <div className="glass-panel-subtle" style={{ padding: '18px', background: '#ffffff', border: '1px solid #e2e8f0', borderLeft: '4px solid #e11d48' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '14px' }}>
-            <XCircle size={18} color="#ef4444" />
-            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, margin: 0, color: '#ffffff' }}>
+            <XCircle size={18} color="#e11d48" />
+            <h3 style={{ fontSize: '0.95rem', fontWeight: 700, margin: 0, color: '#0f172a' }}>
               Dapat Iwasan (Don'ts)
             </h3>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {recommendation.activities.toAvoid.map((act, i) => (
-              <div key={i} style={{ padding: '10px 12px', borderRadius: '10px', background: 'rgba(239, 68, 68, 0.05)', border: '1px solid rgba(239, 68, 68, 0.1)' }}>
-                <h4 style={{ fontSize: '0.875rem', fontWeight: 700, color: '#fca5a5', margin: '0 0 3px 0' }}>
+              <div key={i} style={{ padding: '10px 12px', borderRadius: '10px', background: '#fff1f2', border: '1px solid #fecdd3' }}>
+                <h4 style={{ fontSize: '0.875rem', fontWeight: 700, color: '#be123c', margin: '0 0 3px 0' }}>
                   ⚠️ {act.title}
                 </h4>
-                <p style={{ fontSize: '0.8rem', color: '#cbd5e1', margin: 0 }}>
+                <p style={{ fontSize: '0.8rem', color: '#475569', margin: 0 }}>
                   {act.desc}
                 </p>
               </div>

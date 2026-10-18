@@ -38,20 +38,20 @@ export const Header: React.FC<HeaderProps> = ({
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: '0 8px 20px rgba(2, 132, 199, 0.4)'
+            boxShadow: '0 6px 16px rgba(2, 132, 199, 0.25)'
           }}>
-            <CloudSun size={28} color="#ffffff" className="animate-float" />
+            <CloudSun size={26} color="#ffffff" className="animate-float" />
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <h1 className="font-display" style={{ fontSize: '1.45rem', fontWeight: 800, letterSpacing: '-0.02em', background: 'linear-gradient(to right, #38bdf8, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0 }}>
+              <h1 className="font-display" style={{ fontSize: '1.5rem', fontWeight: 800, letterSpacing: '-0.02em', background: 'linear-gradient(to right, #0284c7, #ea580c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', margin: 0 }}>
                 WeaFit
               </h1>
-              <span className="badge" style={{ background: 'rgba(2, 132, 199, 0.2)', color: '#38bdf8', border: '1px solid rgba(2, 132, 199, 0.4)', fontSize: '0.7rem' }}>
+              <span className="badge" style={{ background: '#e0f2fe', color: '#0369a1', border: '1px solid #bae6fd', fontSize: '0.7rem' }}>
                 v2.0
               </span>
             </div>
-            <p style={{ fontSize: '0.825rem', color: '#94a3b8', margin: 0 }}>
+            <p style={{ fontSize: '0.825rem', color: '#64748b', margin: 0, fontWeight: 500 }}>
               Smart Weather Outfit & Activity Advisor para sa Pilipinas
             </p>
           </div>
@@ -66,9 +66,9 @@ export const Header: React.FC<HeaderProps> = ({
             disabled={isLoading}
             className="btn-secondary"
             title="I-refresh ang live weather data"
-            style={{ padding: '8px 12px', fontSize: '0.85rem' }}
+            style={{ padding: '8px 14px', fontSize: '0.85rem' }}
           >
-            <RefreshCw size={16} className={isLoading ? 'animate-spin' : ''} />
+            <RefreshCw size={15} className={isLoading ? 'animate-spin' : ''} color="#0284c7" />
             <span>I-refresh</span>
           </button>
 
@@ -76,12 +76,11 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={onOpenSimulator}
             className="btn-secondary"
-            style={{ padding: '8px 14px', fontSize: '0.85rem', borderColor: 'rgba(245, 158, 11, 0.3)', color: '#fcd34d' }}
+            style={{ padding: '8px 14px', fontSize: '0.85rem', borderColor: '#fde68a', background: '#fffbeb', color: '#b45309' }}
           >
-            <Sliders size={16} color="#f59e0b" />
+            <Sliders size={15} color="#d97706" />
             <span>Weather Simulator</span>
           </button>
-
 
           {/* Gemini AI Key */}
           <button
@@ -90,11 +89,12 @@ export const Header: React.FC<HeaderProps> = ({
             style={{
               padding: '8px 14px',
               fontSize: '0.85rem',
-              borderColor: hasGeminiKey ? 'rgba(16, 185, 129, 0.4)' : 'rgba(168, 85, 247, 0.4)',
-              color: hasGeminiKey ? '#6ee7b7' : '#d8b4fe'
+              borderColor: hasGeminiKey ? '#a7f3d0' : '#e9d5ff',
+              background: hasGeminiKey ? '#ecfdf5' : '#faf5ff',
+              color: hasGeminiKey ? '#065f46' : '#6b21a8'
             }}
           >
-            <Sparkles size={16} color={hasGeminiKey ? '#10b981' : '#c084fc'} />
+            <Sparkles size={15} color={hasGeminiKey ? '#059669' : '#9333ea'} />
             <span>{hasGeminiKey ? 'Gemini AI Aktibo' : 'Gemini AI (Paganahin)'}</span>
           </button>
 
@@ -104,7 +104,7 @@ export const Header: React.FC<HeaderProps> = ({
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary"
-            style={{ padding: '8px 12px' }}
+            style={{ padding: '8px 12px', color: '#334155' }}
             title="Tingnan sa GitHub"
           >
             <GithubIcon size={16} />

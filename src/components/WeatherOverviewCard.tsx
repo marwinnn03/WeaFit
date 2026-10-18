@@ -11,7 +11,7 @@ import {
   CloudFog, 
   Cloud
 } from 'lucide-react';
-import { WeatherData, PagasaHeatIndexInfo } from '../types';
+import type { WeatherData, PagasaHeatIndexInfo } from '../types';
 
 interface WeatherOverviewCardProps {
   weather: WeatherData;
@@ -23,12 +23,12 @@ export const WeatherOverviewCard: React.FC<WeatherOverviewCardProps> = ({
   heatInfo
 }) => {
   const getWeatherIcon = (code: number) => {
-    if (code >= 95) return <CloudLightning size={52} color="#f59e0b" className="animate-pulse" />;
-    if (code >= 51) return <CloudRain size={52} color="#38bdf8" className="animate-float" />;
-    if (code >= 45) return <CloudFog size={52} color="#94a3b8" />;
-    if (code >= 3) return <Cloud size={52} color="#cbd5e1" />;
-    if (code >= 1) return <SunMedium size={52} color="#fbbf24" className="animate-spin-slow" />;
-    return <Sun size={52} color="#f59e0b" className="animate-pulse-slow" />;
+    if (code >= 95) return <CloudLightning size={48} color="#d97706" className="animate-pulse" />;
+    if (code >= 51) return <CloudRain size={48} color="#0284c7" className="animate-float" />;
+    if (code >= 45) return <CloudFog size={48} color="#64748b" />;
+    if (code >= 3) return <Cloud size={48} color="#94a3b8" />;
+    if (code >= 1) return <SunMedium size={48} color="#f59e0b" className="animate-pulse-slow" />;
+    return <Sun size={48} color="#ea580c" className="animate-pulse-slow" />;
   };
 
   // Heat Index meter position percentage: maps 20°C to 55°C -> 0% to 100%
@@ -40,18 +40,18 @@ export const WeatherOverviewCard: React.FC<WeatherOverviewCardProps> = ({
       {/* Top Header: City & Condition */}
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
         <div>
-          <span style={{ fontSize: '0.8rem', fontWeight: 600, color: '#38bdf8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+          <span style={{ fontSize: '0.785rem', fontWeight: 700, color: '#0284c7', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
             Live Weather Overview
           </span>
-          <h2 className="font-display" style={{ fontSize: '1.65rem', fontWeight: 800, margin: '2px 0 0 0', color: '#ffffff' }}>
+          <h2 className="font-display" style={{ fontSize: '1.65rem', fontWeight: 800, margin: '2px 0 0 0', color: '#0f172a' }}>
             {weather.cityName}
           </h2>
-          <p style={{ fontSize: '0.9rem', color: '#94a3b8', margin: '2px 0 0 0' }}>
+          <p style={{ fontSize: '0.9rem', color: '#64748b', margin: '2px 0 0 0', fontWeight: 500 }}>
             {weather.conditionText}
           </p>
         </div>
 
-        <div style={{ padding: '8px', borderRadius: '16px', background: 'rgba(255, 255, 255, 0.04)' }}>
+        <div style={{ padding: '10px', borderRadius: '16px', background: '#f8fafc', border: '1px solid #e2e8f0', boxShadow: '0 2px 6px rgba(15, 23, 42, 0.03)' }}>
           {getWeatherIcon(weather.weatherCode)}
         </div>
       </div>
@@ -60,27 +60,27 @@ export const WeatherOverviewCard: React.FC<WeatherOverviewCardProps> = ({
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))', gap: '16px', marginBottom: '24px' }}>
         
         {/* Actual Temp */}
-        <div className="glass-panel-subtle" style={{ padding: '16px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#94a3b8', fontSize: '0.8rem', marginBottom: '4px' }}>
-            <Thermometer size={16} color="#38bdf8" />
-            <span>Temperatura</span>
+        <div className="glass-panel-subtle" style={{ padding: '16px', background: '#ffffff', border: '1px solid #e2e8f0' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#64748b', fontSize: '0.8rem', marginBottom: '4px' }}>
+            <Thermometer size={16} color="#0284c7" />
+            <span style={{ fontWeight: 600 }}>Temperatura</span>
           </div>
-          <div className="font-display" style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1, color: '#ffffff' }}>
-            {weather.temp}°<span style={{ fontSize: '1.4rem', fontWeight: 600, color: '#64748b' }}>C</span>
+          <div className="font-display" style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1, color: '#0f172a' }}>
+            {weather.temp}°<span style={{ fontSize: '1.4rem', fontWeight: 600, color: '#94a3b8' }}>C</span>
           </div>
           <span style={{ fontSize: '0.75rem', color: '#64748b' }}>Aktwal sa thermometer</span>
         </div>
 
         {/* Feels Like (Heat Index) */}
-        <div className="glass-panel-subtle" style={{ padding: '16px', borderLeft: `4px solid ${heatInfo.badgeColor}` }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#94a3b8', fontSize: '0.8rem', marginBottom: '4px' }}>
+        <div className="glass-panel-subtle" style={{ padding: '16px', background: '#ffffff', border: '1px solid #e2e8f0', borderLeft: `4px solid ${heatInfo.badgeColor}` }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: heatInfo.textColor, fontSize: '0.8rem', marginBottom: '4px' }}>
             <Gauge size={16} color={heatInfo.badgeColor} />
-            <span style={{ fontWeight: 700, color: heatInfo.badgeColor }}>Damang Init (Heat Index)</span>
+            <span style={{ fontWeight: 700 }}>Damang Init (Heat Index)</span>
           </div>
           <div className="font-display" style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1, color: heatInfo.badgeColor }}>
-            {weather.feelsLike}°<span style={{ fontSize: '1.4rem', fontWeight: 600, color: '#64748b' }}>C</span>
+            {weather.feelsLike}°<span style={{ fontSize: '1.4rem', fontWeight: 600, color: '#94a3b8' }}>C</span>
           </div>
-          <span className="badge" style={{ marginTop: '4px', background: `${heatInfo.badgeColor}25`, color: heatInfo.badgeColor, border: `1px solid ${heatInfo.badgeColor}40`, fontSize: '0.7rem' }}>
+          <span className="badge" style={{ marginTop: '4px', background: `${heatInfo.badgeColor}18`, color: heatInfo.badgeColor, border: `1px solid ${heatInfo.badgeColor}35`, fontSize: '0.7rem' }}>
             {heatInfo.tagalogLabel}
           </span>
         </div>
@@ -90,12 +90,12 @@ export const WeatherOverviewCard: React.FC<WeatherOverviewCardProps> = ({
       {/* Heat Index Scale Gauge */}
       <div style={{ marginBottom: '24px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px', fontSize: '0.785rem' }}>
-          <span style={{ color: '#94a3b8' }}>PAGASA Heat Index Meter</span>
+          <span style={{ color: '#475569', fontWeight: 600 }}>PAGASA Heat Index Meter</span>
           <span style={{ fontWeight: 700, color: heatInfo.badgeColor }}>{weather.feelsLike}°C - {heatInfo.englishLabel}</span>
         </div>
         
         {/* Colorful gradient track */}
-        <div style={{ position: 'relative', height: '10px', borderRadius: '6px', background: 'linear-gradient(to right, #10b981 0%, #f59e0b 28%, #f97316 55%, #ef4444 80%, #7f1d1d 100%)', boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.5)' }}>
+        <div style={{ position: 'relative', height: '10px', borderRadius: '6px', background: 'linear-gradient(to right, #10b981 0%, #f59e0b 28%, #f97316 55%, #ef4444 80%, #991b1b 100%)', boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.1)' }}>
           {/* Indicator pin */}
           <div style={{
             position: 'absolute',
@@ -106,13 +106,13 @@ export const WeatherOverviewCard: React.FC<WeatherOverviewCardProps> = ({
             height: '20px',
             borderRadius: '50%',
             background: '#ffffff',
-            border: `3px solid ${heatInfo.badgeColor}`,
-            boxShadow: `0 0 10px ${heatInfo.badgeColor}`,
+            border: `3.5px solid ${heatInfo.badgeColor}`,
+            boxShadow: `0 2px 8px rgba(15, 23, 42, 0.25)`,
             transition: 'left 0.4s cubic-bezier(0.16, 1, 0.3, 1)'
           }} />
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '0.7rem', color: '#64748b' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '6px', fontSize: '0.7rem', color: '#64748b', fontWeight: 500 }}>
           <span>&lt;27° Presko</span>
           <span>27-32° Caution</span>
           <span>33-41° Ext. Caution</span>
@@ -122,47 +122,47 @@ export const WeatherOverviewCard: React.FC<WeatherOverviewCardProps> = ({
       </div>
 
       {/* Atmospheric Stats Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', paddingTop: '16px', borderTop: '1px solid rgba(255, 255, 255, 0.08)' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', paddingTop: '16px', borderTop: '1px solid #f1f5f9' }}>
         
         {/* Rain Chance */}
-        <div style={{ textAlign: 'center', padding: '10px', borderRadius: '10px', background: 'rgba(56, 189, 248, 0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', color: '#38bdf8', fontSize: '0.775rem', marginBottom: '2px' }}>
+        <div style={{ textAlign: 'center', padding: '12px 8px', borderRadius: '12px', background: '#f0f9ff', border: '1px solid #bae6fd' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', color: '#0369a1', fontSize: '0.775rem', fontWeight: 600, marginBottom: '2px' }}>
             <Droplets size={14} />
             <span>Tsansa ng Ulan</span>
           </div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#e0f2fe' }}>
+          <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#0284c7' }}>
             {weather.rainChance}%
           </div>
-          <span style={{ fontSize: '0.675rem', color: weather.rainChance >= 60 ? '#f87171' : '#38bdf8' }}>
+          <span style={{ fontSize: '0.675rem', fontWeight: 600, color: weather.rainChance >= 60 ? '#dc2626' : '#0369a1' }}>
             {weather.rainChance >= 60 ? 'Mataas' : weather.rainChance >= 30 ? 'Katamtaman' : 'Mababa'}
           </span>
         </div>
 
         {/* Humidity */}
-        <div style={{ textAlign: 'center', padding: '10px', borderRadius: '10px', background: 'rgba(168, 85, 247, 0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', color: '#c084fc', fontSize: '0.775rem', marginBottom: '2px' }}>
+        <div style={{ textAlign: 'center', padding: '12px 8px', borderRadius: '12px', background: '#faf5ff', border: '1px solid #e9d5ff' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', color: '#7e22ce', fontSize: '0.775rem', fontWeight: 600, marginBottom: '2px' }}>
             <Droplets size={14} />
             <span>Alinsangan</span>
           </div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#f3e8ff' }}>
+          <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#9333ea' }}>
             {weather.humidity}%
           </div>
-          <span style={{ fontSize: '0.675rem', color: '#c084fc' }}>
-            Relative Humidity
+          <span style={{ fontSize: '0.675rem', color: '#7e22ce', fontWeight: 500 }}>
+            Humidity
           </span>
         </div>
 
         {/* Wind Speed / UV */}
-        <div style={{ textAlign: 'center', padding: '10px', borderRadius: '10px', background: 'rgba(245, 158, 11, 0.05)' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', color: '#fbbf24', fontSize: '0.775rem', marginBottom: '2px' }}>
+        <div style={{ textAlign: 'center', padding: '12px 8px', borderRadius: '12px', background: '#fffbeb', border: '1px solid #fde68a' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '4px', color: '#b45309', fontSize: '0.775rem', fontWeight: 600, marginBottom: '2px' }}>
             <Wind size={14} />
             <span>Hangin & UV</span>
           </div>
-          <div style={{ fontSize: '1.25rem', fontWeight: 800, color: '#fef3c7' }}>
-            {weather.windSpeed} <span style={{ fontSize: '0.75rem', fontWeight: 500 }}>km/h</span>
+          <div style={{ fontSize: '1.3rem', fontWeight: 800, color: '#d97706' }}>
+            {weather.windSpeed} <span style={{ fontSize: '0.75rem', fontWeight: 600 }}>km/h</span>
           </div>
-          <span style={{ fontSize: '0.675rem', color: '#fbbf24' }}>
-            UV Index: {weather.uvIndex}
+          <span style={{ fontSize: '0.675rem', color: '#b45309', fontWeight: 600 }}>
+            UV: {weather.uvIndex}
           </span>
         </div>
 

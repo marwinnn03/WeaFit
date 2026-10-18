@@ -1,6 +1,6 @@
 import React from 'react';
-import { AlertTriangle, ShieldAlert, CloudRain, Flame, HeartPulse } from 'lucide-react';
-import { PagasaHeatIndexInfo, PagasaRainInfo } from '../types';
+import { CloudRain, Flame, HeartPulse } from 'lucide-react';
+import type { PagasaHeatIndexInfo, PagasaRainInfo } from '../types';
 
 interface PagasaAlertBannerProps {
   heatInfo: PagasaHeatIndexInfo;
@@ -23,15 +23,16 @@ export const PagasaAlertBanner: React.FC<PagasaAlertBannerProps> = ({
         style={{
           padding: '16px 20px',
           borderLeft: `5px solid ${heatInfo.badgeColor}`,
-          background: `linear-gradient(135deg, ${heatInfo.badgeColor}18, rgba(18, 26, 47, 0.95))`
+          background: `linear-gradient(135deg, ${heatInfo.badgeColor}0f, #ffffff)`
         }}
       >
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
           <div style={{
-            width: '38px',
-            height: '38px',
-            borderRadius: '10px',
-            background: `${heatInfo.badgeColor}30`,
+            width: '40px',
+            height: '40px',
+            borderRadius: '12px',
+            background: `${heatInfo.badgeColor}18`,
+            border: `1px solid ${heatInfo.badgeColor}35`,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -46,18 +47,18 @@ export const PagasaAlertBanner: React.FC<PagasaAlertBannerProps> = ({
 
           <div style={{ flex: 1 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
-              <span className="badge" style={{ background: heatInfo.badgeColor, color: '#ffffff' }}>
+              <span className="badge" style={{ background: heatInfo.badgeColor, color: '#ffffff', boxShadow: `0 2px 6px ${heatInfo.badgeColor}40` }}>
                 DOST-PAGASA Heat Index: {heatInfo.tagalogLabel}
               </span>
-              <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+              <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
                 Opisyal na Alerto sa Kalusugan
               </span>
             </div>
 
-            <p style={{ fontSize: '0.875rem', color: '#e2e8f0', margin: '0 0 6px 0', lineHeight: 1.5 }}>
-              <strong>Epekto sa Katawan:</strong> {heatInfo.healthEffects}
+            <p style={{ fontSize: '0.875rem', color: '#1e293b', margin: '0 0 6px 0', lineHeight: 1.5 }}>
+              <strong style={{ color: '#0f172a' }}>Epekto sa Katawan:</strong> {heatInfo.healthEffects}
             </p>
-            <p style={{ fontSize: '0.825rem', color: '#cbd5e1', margin: 0, opacity: 0.9 }}>
+            <p style={{ fontSize: '0.825rem', color: '#475569', margin: 0, fontWeight: 500 }}>
               💡 <strong>Rekomendasyon:</strong> {heatInfo.recommendedAction}
             </p>
           </div>
@@ -69,17 +70,18 @@ export const PagasaAlertBanner: React.FC<PagasaAlertBannerProps> = ({
         <div
           className="glass-panel"
           style={{
-            padding: '14px 20px',
+            padding: '16px 20px',
             borderLeft: `5px solid ${rainInfo.color}`,
-            background: `linear-gradient(135deg, ${rainInfo.color}15, rgba(18, 26, 47, 0.95))`
+            background: `linear-gradient(135deg, ${rainInfo.color}0f, #ffffff)`
           }}
         >
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px' }}>
             <div style={{
-              width: '38px',
-              height: '38px',
-              borderRadius: '10px',
-              background: `${rainInfo.color}30`,
+              width: '40px',
+              height: '40px',
+              borderRadius: '12px',
+              background: `${rainInfo.color}18`,
+              border: `1px solid ${rainInfo.color}35`,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -90,14 +92,14 @@ export const PagasaAlertBanner: React.FC<PagasaAlertBannerProps> = ({
 
             <div style={{ flex: 1 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap', marginBottom: '4px' }}>
-                <span className="badge" style={{ background: rainInfo.color, color: '#ffffff' }}>
+                <span className="badge" style={{ background: rainInfo.color, color: '#ffffff', boxShadow: `0 2px 6px ${rainInfo.color}40` }}>
                   {rainInfo.label}
                 </span>
-                <span style={{ fontSize: '0.8rem', color: '#94a3b8' }}>
+                <span style={{ fontSize: '0.8rem', color: '#64748b', fontWeight: 600 }}>
                   Baha at Commute Risk
                 </span>
               </div>
-              <p style={{ fontSize: '0.85rem', color: '#e2e8f0', margin: 0 }}>
+              <p style={{ fontSize: '0.875rem', color: '#1e293b', margin: 0, lineHeight: 1.5 }}>
                 {rainInfo.description} <em>{rainInfo.floodingRisk}</em>
               </p>
             </div>

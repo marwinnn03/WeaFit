@@ -1,6 +1,6 @@
 import React from 'react';
 import { Bike, GraduationCap, Briefcase, Coffee, Dumbbell, UserCheck } from 'lucide-react';
-import { PersonaType } from '../types';
+import type { PersonaType } from '../types';
 import { PERSONAS } from '../utils/wardrobePresets';
 
 interface PersonaSelectorProps {
@@ -13,20 +13,20 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
   onSelectPersona
 }) => {
   const getIcon = (iconName: string, isSelected: boolean) => {
-    const color = isSelected ? '#38bdf8' : '#94a3b8';
+    const color = isSelected ? '#0284c7' : '#64748b';
     switch (iconName) {
       case 'Bike':
-        return <Bike size={22} color={color} />;
+        return <Bike size={20} color={color} />;
       case 'GraduationCap':
-        return <GraduationCap size={22} color={color} />;
+        return <GraduationCap size={20} color={color} />;
       case 'Briefcase':
-        return <Briefcase size={22} color={color} />;
+        return <Briefcase size={20} color={color} />;
       case 'Coffee':
-        return <Coffee size={22} color={color} />;
+        return <Coffee size={20} color={color} />;
       case 'Dumbbell':
-        return <Dumbbell size={22} color={color} />;
+        return <Dumbbell size={20} color={color} />;
       default:
-        return <UserCheck size={22} color={color} />;
+        return <UserCheck size={20} color={color} />;
     }
   };
 
@@ -34,7 +34,7 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
     <div className="glass-panel" style={{ padding: '20px', marginBottom: '24px' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
         <div>
-          <h2 style={{ fontSize: '0.975rem', fontWeight: 700, margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#94a3b8' }}>
+          <h2 style={{ fontSize: '0.9rem', fontWeight: 800, margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#475569' }}>
             Sino Ka Ngayong Araw? (Persona Selector)
           </h2>
           <p style={{ fontSize: '0.8rem', color: '#64748b', margin: '2px 0 0 0' }}>
@@ -54,10 +54,10 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
               className={`persona-chip ${isSelected ? 'active' : ''}`}
             >
               <div style={{
-                width: '42px',
-                height: '42px',
+                width: '40px',
+                height: '40px',
                 borderRadius: '12px',
-                background: isSelected ? 'rgba(56, 189, 248, 0.2)' : 'rgba(255, 255, 255, 0.05)',
+                background: isSelected ? '#e0f2fe' : '#f1f5f9',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -67,14 +67,14 @@ export const PersonaSelector: React.FC<PersonaSelectorProps> = ({
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: isSelected ? '#ffffff' : '#e2e8f0', margin: 0 }}>
+                  <h3 style={{ fontSize: '0.9rem', fontWeight: 700, color: isSelected ? '#0369a1' : '#0f172a', margin: 0 }}>
                     {p.name}
                   </h3>
                   {isSelected && (
-                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#38bdf8', boxShadow: '0 0 8px #38bdf8' }} />
+                    <span style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#0284c7', boxShadow: '0 0 8px rgba(2, 132, 199, 0.4)' }} />
                   )}
                 </div>
-                <p style={{ fontSize: '0.75rem', color: isSelected ? '#bae6fd' : '#94a3b8', margin: '2px 0 0 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                <p style={{ fontSize: '0.75rem', color: isSelected ? '#0284c7' : '#64748b', margin: '2px 0 0 0', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                   {p.tagline}
                 </p>
               </div>
